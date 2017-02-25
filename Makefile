@@ -13,6 +13,9 @@ OCAML= ocamlc
 #	$(OCAML) -o raytracer-demo $(LIBS) dependances.ml raytracer-demo.ml 
 	
 	
+point.cmi: 
+	$(OCAML) -c point.mli
+	
 clean:
 	rm -rf *.o
 	rm -rf *.cmo
