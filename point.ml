@@ -4,20 +4,10 @@ type t = {
 	z: float; 	
 }
 
-
-exception SizeError (*Exception si x,y,z<0*)
-
 (*Crée un nouveau point 3D de coordonnées (x,y,z) *)
 
 let make (vx:float) (vy:float) (vz:float) :t=
-	try
-		if( x<0 || y<0 || z<0) then
-				raise SizeError
-			else
-				{x=vx;y=vy;z=vz;}
-	with
-	| SizeError -> {0;0;0;}
-
+	{x=vx;y=vy;z=vz;}
 
 (*Retourne la coordonnée x*)
 let getx (point:t) :float=
