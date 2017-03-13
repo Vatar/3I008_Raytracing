@@ -2,47 +2,47 @@ type t = {
   x: Point.t;
 }
 
-(*CrÈe un nouveau vecteur 3D de coordonnÈes (x,y,z) *)
+(*CrÔøΩe un nouveau vecteur 3D de coordonnÔøΩes (x,y,z) *)
 
 let make (vx:float) (vy:float) (vz:float) :t=
 	{x=Point.make vx vy vz}
 
-(*Retourne la coordonnÈe x*)
+(*Retourne la coordonnÔøΩe x*)
 let getx (point:t) :float=
-	t.x
+	Point.getx t.x
 	
-(*Retourne la coordonnÈe y*)
+(*Retourne la coordonnÔøΩe y*)
 let gety (point:t) :float=
-	t.y
+	Point.gety t.y
 
-(*Retourne la coordonnÈe z*)
+(*Retourne la coordonnÔøΩe z*)
 let getz (point:t) :float=
-	t.z
+	Point.getz t.z
 
-(*Setter pour la coordonnÈe x*)
+(*Setter pour la coordonnÔøΩe x*)
 let setx (point:t) (var:float) :t=
 	{x=Point.setx t var}
 
-(*Setter pour la coordonnÈe y*)
+(*Setter pour la coordonnÔøΩe y*)
 let sety (point:t) (var:float) :t=
 	{x=Point.sety t var}
 	
-(*Setter pour la coordonnÈe z*)	
+(*Setter pour la coordonnÔøΩe z*)	
 let setz (point:t) (var:float) :t=
 	{x=Point.setz t var}
 	
 (*Addition de deux vecteurs v1 et v2*)
 let add (v1:t) (v2:t) :t=
-	{x=Point.make (Point.getx v1 + Point.getx v2) (Point.gety v1 + Point.gety v2) 
-	Point.getz v1 + Point.getz v2()}
+	{x=Point.make (getx v1 + getx v2) (gety v1 + gety v2) 
+	(getz v1 + getz v2)}
 	
 (*Soustraction de deux vecteur v1 et v2*)
 let soustrac (v1:t) (v2:t) :t=
-	let x:float=Point.getx v2 
+	let x:float=getx v2 
 	in
-	let y:float=Point.gety v2
+	let y:float=gety v2
 	in
-	let z:float=Point.getz v2 
+	let z:float=getz v2 
 	in
 	
 	let v2x :float=
@@ -71,10 +71,30 @@ let soustrac (v1:t) (v2:t) :t=
 		
 	add v1 (make (v2x) (v2y) (v2z) )
 	
+(*Multiplication d'un vecteur vect par un scalaire scal*)
+let multi_scal (vect:t) (scal:float) :t=
+	{x=Point.make ((getx vect) *. scal) ( (gety vect) *. scal ) ( (getz vect) *. scal  )}
 
-let multi_scal: t -> float -> t
-let prod_scal: t -> t -> t
-let prod_vect: t -> t -> t
+(*Produit scalaire de deux vecteurs vect1 et vect2 retournant un float*)
+let prod_scal (vect1:t) (vect2:t) :float=
+	( (getx vect1 *. getx vect2) +. (gety vect1 *. gety vect2) +. (getz vect1 *. getz vect2) )
+	
+(*Produit vectorielle de deux vecteurs vect1 et vect2 retournant un nouveau vecteur*)	
+let prod_vect (vect1:t) (vect2:t) :t=
+	{x=Point.make ( (gety vect1 *. getz vect2) -. (getz vect1 *. gety vect2   ) )  
+	( (getz vect1 *. getx vect2) -. (getx vect1 *. getz vect2) ) 
+	(  (getx vect1 *. gety vect2) -.  (gety vect1 *. getx vect2)  )  }
+	
 
-let norme: t
-let normalisation: t
+(*Renvoie la racine car√©e de x^2 + y^2 + z^2) = longeur du vecteur *)  
+let norme (vect:t) :float=
+	sqrt ( ((getx vect )**2) +. ((gety vect ) **2) +. ((getz vect)**2)  )
+	
+	
+(*Renvoie un vecteur normalis√© tel que sa norme/longueur=1*)
+let normalisation (vect:t) :t=
+	let long :float=
+		norme vect
+		in
+	{w=Point.make ((getx vect) /. long)  ( (gety vect) /. long  ) ( (getz vect) /. long ) }
+	

@@ -19,8 +19,8 @@ val add: t -> t -> t
 val sous: t -> t -> t
 
 val multi_scal: t -> float -> t
-val prod_scal: t -> t -> t
+val prod_scal: t -> t -> float
 val prod_vect: t -> t -> t
 
-val norme: t
-val normalisation: t
+val norme: t -> float
+val normalisation: t -> t
