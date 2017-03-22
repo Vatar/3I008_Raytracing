@@ -8,7 +8,7 @@ let make (vx:float) (vy:float) (vz:float) :t=
 	{x=Point.make vx vy vz}
 
 (*Retourne la coordonn�e x*)
-let getx (point:t) :float=
+let getx (point:t) :float= 
 	Point.getx t.x
 	
 (*Retourne la coordonn�e y*)

@@ -8,7 +8,7 @@ type t = {
 
 let make (vx:float) (vy:float) (vz:float) :t=
 	{x=vx;y=vy;z=vz;}
-
+ 
 (*Retourne la coordonnée x*)
 let getx (point:t) :float=
 	point.x

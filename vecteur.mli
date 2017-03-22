@@ -3,8 +3,6 @@ type t = {
 
 }
 
-exception SizeError
-
 val make : float -> float-> float -> t
 
 val getx: t -> float

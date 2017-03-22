@@ -4,8 +4,6 @@ type t = {
 	z: float; 	
 }
 
-exception SizeError
-
 val make : float -> float-> float -> t
 
 val getx: t -> float
