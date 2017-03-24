@@ -6,16 +6,16 @@ type t = {
 
 let make (point:Point.t) (vecteur:Vecteur.t) :t=
   let vecteurnorm :Vecteur.t=
-    if (norme vecteur !=1)
+    if (Vecteur.norme vecteur !=1.0)
     then 
-      (normalisation (vecteur))
+      (Vecteur.normalisation (vecteur))
     else
       vecteur 
   in 
   {orig=point;direct=vecteurnorm}
-
+ 
 let getorig (rayon:t) :Point.t=
-  t.orig
+  rayon.orig
 
 let getdirect (rayon:t) :Vecteur.t=
-  t.direct
+  rayon.direct

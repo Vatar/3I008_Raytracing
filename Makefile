@@ -1,5 +1,6 @@
 
-#all: raytracer-demo
+all: camera.cmi
+#raytracer-demo
 OCAML= ocamlc
 #LIBS=unix.cma graphics.cma 
 
@@ -15,7 +16,17 @@ OCAML= ocamlc
 	
 point.cmi: 
 	$(OCAML) -c point.mli
+
+vecteur.cmi: point.cmi
+	$(OCAML) -c vecteur.mli
+
+rayon.cmi: vecteur.cmi
+	$(OCAML) -c rayon.mli
 	
+camera.cmi: rayon.cmi
+	$(OCAML) -c camera.mli
+
+
 clean:
 	rm -rf *.o
 	rm -rf *.cmo

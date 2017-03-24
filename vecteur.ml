@@ -9,32 +9,32 @@ let make (vx:float) (vy:float) (vz:float) :t=
 
 (*Retourne la coordonn�e x*)
 let getx (point:t) :float= 
-	Point.getx t.x
+	Point.getx point.x
 	
 (*Retourne la coordonn�e y*)
 let gety (point:t) :float=
-	Point.gety t.y
+	Point.gety point.x
 
 (*Retourne la coordonn�e z*)
 let getz (point:t) :float=
-	Point.getz t.z
+	Point.getz point.x
 
-(*Setter pour la coordonn�e x*)
+(*Setter pour la coordonn�e x*) 
 let setx (point:t) (var:float) :t=
-	{x=Point.setx t var}
+	{x=Point.setx point.x var}
 
 (*Setter pour la coordonn�e y*)
 let sety (point:t) (var:float) :t=
-	{x=Point.sety t var}
+	{x=Point.sety point.x var}
 	
 (*Setter pour la coordonn�e z*)	
 let setz (point:t) (var:float) :t=
-	{x=Point.setz t var}
+	{x=Point.setz point.x var}
 	
 (*Addition de deux vecteurs v1 et v2*)
 let add (v1:t) (v2:t) :t=
-	{x=Point.make (getx v1 + getx v2) (gety v1 + gety v2) 
-	(getz v1 + getz v2)}
+	{x=Point.make (getx v1 +. getx v2) (gety v1 +. gety v2) 
+	(getz v1 +. getz v2)}
 	
 (*Soustraction de deux vecteur v1 et v2*)
 let soustrac (v1:t) (v2:t) :t=
@@ -46,27 +46,27 @@ let soustrac (v1:t) (v2:t) :t=
 	in
 	
 	let v2x :float=
-		if(x>0)
+		if(x>0.0)
 		then
-			(x-(2*x))
+			(x-.(2.0*.x))
 		else
-			(x+(2*x))
+			(x+.(2.0*.x))
 		in
 		
 		let v2y :float=
-			if(y>0)
+			if(y>0.0)
 			then
-				(y-(2*y))
+				(y-.(2.0*.y))
 			else
-				(y+(2*y))
+				(y+.(2.0*.y))
 		in
 		
 		let v2z :float=
-			if(z>0)
+			if(z>0.0)
 			then
-				(z-(2*z))
+				(z-.(2.0*.z))
 			else
-				(z+(2*z))
+				(z+.(2.0*.z))
 		in
 		
 	add v1 (make (v2x) (v2y) (v2z) )
@@ -88,7 +88,7 @@ let prod_vect (vect1:t) (vect2:t) :t=
 
 (*Renvoie la racine carée de x^2 + y^2 + z^2) = longeur du vecteur *)  
 let norme (vect:t) :float=
-	sqrt ( ((getx vect )**2) +. ((gety vect ) **2) +. ((getz vect)**2)  )
+	sqrt ( ((getx vect )**2.0) +. ((gety vect ) **2.0) +. ((getz vect)**2.0)  )
 	
 	
 (*Renvoie un vecteur normalisé tel que sa norme/longueur=1*)
@@ -96,5 +96,5 @@ let normalisation (vect:t) :t=
 	let long :float=
 		norme vect
 		in
-	{w=Point.make ((getx vect) /. long)  ( (gety vect) /. long  ) ( (getz vect) /. long ) }
+	{x=Point.make ((getx vect) /. long)  ( (gety vect) /. long  ) ( (getz vect) /. long ) }
 	

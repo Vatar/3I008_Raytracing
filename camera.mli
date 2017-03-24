@@ -8,5 +8,5 @@ type t={
 
 val make: Point.t -> float -> float -> float -> Point.t -> t
 
-val throwray: Camera.t -> unit
+val throwray: t -> unit
 			    

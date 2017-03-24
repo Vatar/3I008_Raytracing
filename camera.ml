@@ -6,9 +6,9 @@ type t={
   center:Point.t; (*point de visée/centre de l'ecran*)
 }
 
-let make (origin:Point.t) (dx:float) (dy:float) (fofv:float) (cent:Point.t) :t={
+let make (origin:Point.t) (dx:float) (dy:float) (fofv:float) (cent:Point.t) :t=
   {orig=origin;dimx=dx;dimy=dy;fov=fofv;center=cent}
-}
 
-let throwray (camera:t) :unit=
+
+let throwray (camera:t) :unit= 
   ()

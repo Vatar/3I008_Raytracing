@@ -1,7 +1,7 @@
 type t = { 
   x: float;
   y: float;	
-	z: float; 	
+  z: float; 	
 }
 
 (*Crée un nouveau point 3D de coordonnées (x,y,z) *)
@@ -18,17 +18,17 @@ let gety (point:t) :float=
 	point.y
 
 (*Retourne la coordonnée z*)
-let getz (point:t) :float=
-	point.z
+let getz (point:t) :float= 
+	point.z 
 
 (*Setter pour la coordonnée x*)
 let setx (point:t) (var:float) :t=
-	{var;point.y;point.z}
+	{x=var;y=point.y;z=point.z}
 
 (*Setter pour la coordonnée y*)
 let sety (point:t) (var:float) :t=
-	{point.x;var;point.z}
+	{x=point.x;y=var;z=point.z}
 	
 (*Setter pour la coordonnée z*)	
 let setz (point:t) (var:float) :t=
-{point.x;point.y;var}
+{x=point.x;y=point.y;z=var}
